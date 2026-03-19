@@ -311,6 +311,7 @@ body {
   color: var(--text-primary);
   line-height: 1.7;
   overflow-x: hidden;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -1001,6 +1002,14 @@ a:hover {
 
   .hero__actions {
     justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .hero__socials {
@@ -1195,6 +1204,7 @@ a:hover {
   animation: logoBubbleRise var(--duration, 10s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform, bottom, opacity;
 }
 
 .hero-tech-grid__icon img {
@@ -1498,9 +1508,16 @@ a:hover {
 }
 
 .btn--outline:hover {
-  background: var(--accent-glow);
+  background: var(--accent);
   border-color: var(--accent);
+  color: var(--bg-primary) !important;
   transform: translateY(-2px);
+}
+
+[data-theme="light"] .btn--outline {
+  border-color: var(--accent);
+  color: #0d9488 !important;
+  background: rgba(45, 212, 191, 0.05);
 }
 
 .btn--full {
@@ -1990,7 +2007,7 @@ a:hover {
   position: relative;
   max-width: 900px;
   margin: 60px auto 0;
-  padding-left: 60px;
+  padding-left: clamp(30px, 8vw, 60px);
 }
 
 /* Logic Line Style */
@@ -2237,7 +2254,7 @@ a:hover {
   }
 
   .edu__pro-node {
-    left: -40px;
+    left: calc(clamp(30px, 8vw, 60px) * -1 + 7px);
   }
 }
 
@@ -2377,7 +2394,7 @@ a:hover {
 
 .icon-wrapper:hover .tech-icon {
   transform: scale(1.1);
-  filter: grayscale(0%) brightness(1.1);
+  filter: var(--tech-hover-filter, grayscale(0%) brightness(1.1));
 }
 
 .tech-label {
@@ -2581,7 +2598,8 @@ a:hover {
 
 .project-card__links {
   display: flex;
-  gap: 8px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .project-card__link {
@@ -2676,10 +2694,11 @@ a:hover {
 }
 
 .project-card__features li::before {
-  content: "â†’";
+  content: "→";
   color: var(--accent);
   font-weight: bold;
   font-size: 0.9rem;
+  margin-right: 4px;
 }
 
 .project-card__metadata {
@@ -2707,17 +2726,17 @@ a:hover {
 /* --- Contact --- */
 .contact__grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+  gap: clamp(24px, 5vw, 48px);
   align-items: stretch;
   position: relative;
-  margin-top: 40px;
+  margin-top: clamp(30px, 5vw, 60px);
 }
 
 .contact__info {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: clamp(16px, 3vw, 24px);
   position: relative;
   z-index: 30;
 }
@@ -2731,8 +2750,8 @@ a:hover {
 .contact__meta-container {
   display: flex;
   justify-content: center;
-  gap: 24px;
-  margin: 24px 0 32px;
+  gap: clamp(12px, 2vw, 24px);
+  margin: clamp(20px, 4vw, 32px) 0;
   flex-wrap: wrap;
 }
 
@@ -2816,15 +2835,14 @@ a:hover {
 
 .contact__card {
   display: flex;
-  gap: 20px;
+  gap: clamp(16px, 3vw, 20px);
   align-items: start;
-  padding: 24px;
+  padding: clamp(20px, 4vw, 28px);
   background: rgba(15, 23, 42, 0.3);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-lg);
-  margin-bottom: 20px;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
   overflow: hidden;
@@ -2906,11 +2924,10 @@ a:hover {
 /* Contact Socials Grid */
 .contact__social-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(45px, 10vw, 60px), 1fr));
+  gap: clamp(10px, 2vw, 15px);
   margin-top: 18px;
-  margin-bottom: 38px;
-  /* Adds consistent breathing room at the bottom of the card */
+  margin-bottom: clamp(20px, 4vw, 38px);
   width: 100%;
 }
 
@@ -2982,11 +2999,7 @@ a:hover {
   border-color: transparent;
 }
 
-@media (max-width: 480px) {
-  .contact__social-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+/* Media query removed for fluid social grid */
 
 .contact__status-badge {
   display: inline-flex;
@@ -3092,7 +3105,7 @@ a:hover {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-xl);
-  padding: 40px;
+  padding: clamp(24px, 5vw, 40px);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
@@ -3425,9 +3438,7 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
-  .contact__grid {
-    grid-template-columns: 1fr;
-  }
+/* Media query removed for fluid contact grid */
 
   .section {
     padding: 60px 24px;
@@ -3610,6 +3621,7 @@ a:hover {
 .icon-wrapper[data-tech="Render"] .tech-icon,
 .icon-wrapper[data-tech="Framer Motion"] .tech-icon {
   filter: invert(1) brightness(1.2);
+  --tech-hover-filter: invert(1) brightness(1.4) grayscale(0%);
 }
 
 /* Ensure logos look normal on white cards in light theme */
