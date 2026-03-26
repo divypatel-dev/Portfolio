@@ -2759,9 +2759,10 @@ a:hover {
 .contact__meta-container {
   display: flex;
   justify-content: center;
-  gap: clamp(12px, 2vw, 24px);
-  margin: clamp(20px, 4vw, 32px) 0;
+  gap: clamp(8px, 2vw, 24px);
+  margin: clamp(16px, 4vw, 32px) 0;
   flex-wrap: wrap;
+  padding: 0 clamp(0px, 2vw, 16px);
 }
 
 .contact__meta-item {
@@ -2942,22 +2943,35 @@ a:hover {
 
 @media (max-width: 480px) {
   .contact__social-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 10px 4px;
-    gap: 12px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .contact__social-grid::-webkit-scrollbar {
-    display: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 8px;
+    padding: 4px 0;
+    overflow: visible;
   }
 
   .social-link-card {
-    flex: 0 0 54px;
-    scroll-snap-align: start;
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    padding: 8px;
+  }
+
+  .social-link-card svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .contact__social-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .social-link-card {
+    height: 42px;
+    padding: 8px;
   }
 }
 
@@ -3034,20 +3048,24 @@ a:hover {
 .contact__status-badge {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: clamp(6px, 1.5vw, 10px);
   background: rgba(15, 23, 42, 0.6);
   border: 1px solid var(--accent-glow);
-  padding: 8px 16px;
+  padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 16px);
   border-radius: 50px;
-  font-size: 0.8rem;
+  font-size: clamp(0.62rem, 1.8vw, 0.8rem);
   font-weight: 700;
   color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
+  letter-spacing: clamp(0.3px, 0.2vw, 1px);
+  margin-bottom: clamp(8px, 2vw, 20px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  max-width: 100%;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
 }
 
 .contact__status-badge:hover {
@@ -3468,7 +3486,30 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
-/* Media query removed for fluid contact grid */
+  /* Contact section mobile stacking */
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .contact__form-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+  }
+
+  .contact__card:hover {
+    transform: translateY(-3px) translateX(0);
+  }
+
+  .contact__meta-container {
+    gap: 8px;
+  }
+
+  .contact__status-badge {
+    margin-bottom: 8px;
+  }
 
   .section {
     padding: 60px 24px;
@@ -3514,6 +3555,10 @@ a:hover {
 }
 
 @media (max-width: 500px) {
+  .section {
+    padding: 50px 16px;
+  }
+
   .hero__name {
     font-size: 2.2rem;
   }
@@ -3535,7 +3580,56 @@ a:hover {
   }
 
   .contact__form {
-    padding: 24px;
+    padding: 20px;
+  }
+
+  .contact__meta-container {
+    gap: 4px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .contact__status-badge {
+    font-size: 0.58rem;
+    padding: 4px 8px;
+    gap: 4px;
+    letter-spacing: 0.2px;
+    margin-bottom: 4px;
+    border-radius: 20px;
+  }
+
+  .contact__card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .contact__card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .contact__card-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contact__card h4 {
+    font-size: 0.9rem;
+  }
+
+  .contact__card p {
+    font-size: 0.82rem;
+    word-break: break-word;
+  }
+
+  .contact__link {
+    word-break: break-all;
+  }
+
+  .section__subtitle {
+    font-size: 0.92rem !important;
+    padding: 0 4px;
   }
 }
 
