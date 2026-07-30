@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#020617"/>
+    </linearGradient>
+    <linearGradient id="text" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2dd4bf"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <rect x="16" y="16" width="480" height="480" rx="80" fill="none" stroke="url(#text)" stroke-width="4" opacity="0.3"/>
+  <text x="256" y="290" text-anchor="middle" font-family="'Fira Code','Cascadia Code','Consolas',monospace" font-weight="800" font-size="200" fill="url(#text)">DP</text>
+  <text x="256" y="390" text-anchor="middle" font-family="'Fira Code','Cascadia Code','Consolas',monospace" font-weight="400" font-size="72" fill="#2dd4bf" opacity="0.6">&lt;/&gt;</text>
+</svg>
