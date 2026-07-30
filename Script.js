@@ -41,10 +41,10 @@ if (preloader) {
   const loaderInterval = setInterval(() => {
     // Target ~2.5 seconds (50 steps x 50ms)
     // We use a slight random variance for an organic tech feel
-    const baseIncrement = 1.8; 
+    const baseIncrement = 1.8;
     const variance = Math.random() * 1.2;
     const increment = baseIncrement + variance;
-    
+
     count += increment;
 
     if (count >= 100) {

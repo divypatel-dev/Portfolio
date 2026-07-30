@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://divy-patel.netlify.app/sitemap.xml
+
+# Host
+Host: https://divy-patel.netlify.app
